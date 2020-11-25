@@ -17,5 +17,5 @@ You can either get this as zip, use git bash or install it with luvit `lit insta
 All of them are functions.
 
 * `ytsearcher.new(YT_API_KEY)` Returns ytsearcher module itself, but with the key info included.
-* `ytsearcher:search(term)` Returns `video-info-table` (table, can be nil if no results.) and `response` (string or nil). While response may be nil when there's no response. Can __ONLY__ be run in a coroutine. This will yield till it has the results. The returned video-info-table will contain a video `id`, `title`, `thumbnail` (link), `author` (author name).
+* `ytsearcher:search(term)` Returns `video-info-table` (table, can be nil if no results.) and `response` (string or nil). Note that response may be nil when there's no response. Can __ONLY__ be run in a coroutine. This will yield till it has the results. The returned video-info-table will contain a video `id`, `title`, `thumbnail` (link), `author` (author name).
 
