@@ -1,5 +1,5 @@
 -- searches video on youtube, made by dustin.
--- uses the coro-http and event emitter module from luvit
+-- uses the coro-http module from luvit
 --[[ 
 
 HOW TO USE:
@@ -23,7 +23,6 @@ When there's an error, it will return nil (and as second argument the response i
 ]]
 
 local http = require('coro-http')
-local Emitter = require('core').Emitter
 
 local apiurl = "https://www.googleapis.com/youtube/v3/search?"
 
@@ -40,21 +39,20 @@ end
 local module = {}
 module.__index = module
 
-module.new = function (ytkey)
+module.new = function (ytkey,regioncode)
     local classSelf = {}
     setmetatable(classSelf, module)
-
     classSelf.key = ytkey
     return classSelf
 end
 
-function module:search(searchparam)
+function module:search(searchparam,regioncode)
     local searchParams = {
         key = self.key,
         maxResults = 1,
         part = 'snippet',
         q = searchparam,
-        regionCode = 'US',
+        regionCode = regioncode or "US",
         type = 'video'
     }
     local queryUrl = ""
@@ -68,7 +66,7 @@ function module:search(searchparam)
     end
     local from = body:find('"high":')
     if not from then
-        return nil
+        return nil, "Cannot find thumbnail"
     end
     local videoinfo = {
         id = find(body,'"videoId":'),
