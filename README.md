@@ -10,12 +10,12 @@ You can either get this as zip, use git bash or install it with luvit `lit insta
 
 2. require the module with `local ytsearcher = require('ytsearcher').new('YOUR_YOUTUBE_API_KEY')` and replace YOUR_YOUTUBE_API_KEY with your youtube api key.
 
-3. search something with ytsearcher:search (for example: `ytsearcher:search('banana+phone')`) it will return the youtube video info with id and a response. If it can't find the video, video table will be nil and response may contain info about what happened.
+3. search something with ytsearcher:search (for example: `ytsearcher:search('banana+phone')`) it will return the youtube video info with id and a response. If it can't find the video, video table will be nil and response may contain info about what happened. When searching you have to put + on spaces, so you can just use gsub for that.
 
 ## Small documentation
 
 All of them are functions.
 
 * `ytsearcher.new(YT_API_KEY)` Returns ytsearcher module itself, but with the key info included.
-* `ytsearcher:search(term)` Returns `video-info-table` (table, can be nil if no results.) and `response` (string or nil). Note that response may be nil when there's no response. Can __ONLY__ be run in a coroutine. This will yield till it has the results. The returned video-info-table will contain a video `id`, `title`, `thumbnail` (link), `author` (author name).
+* `ytsearcher:search(term,regioncode)` Returns `video-info-table` (table, can be nil if no results.) and `response` (string or nil). Note that response may be nil when there's no response. Can __ONLY__ be run in a coroutine. This will yield till it has the results. The returned video-info-table will contain a video `id`, `title`, `thumbnail` (link), `author` (author name). Regioncode is optional such as "NL","DE" and the default is "US".
 
