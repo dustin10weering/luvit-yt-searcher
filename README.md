@@ -3,7 +3,7 @@ Searches for a video on youtube using google's youtube api. (not for youtube-dl)
 
 ## How to install this dep?
 You do need [Luvit](https://luvit.io/) of course.
-You can either get this as zip, use git bash or install it with luvit `lit install luvit-yt-searcher`
+You can either get this as zip, use git bash or install it with luvit `lit install luvit-yt-searcher` (note: coming soon to lit)
 
 ## So how do I use it?
 1. First of all, you need a youtube api key. You can get one by following this tutioral: https://developers.google.com/youtube/v3/getting-started. To view your quota, you can view this page https://console.cloud.google.com/apis/.
