@@ -65,8 +65,6 @@ function module:search(searchparam,regioncode)
         return nil,response
     end
 	-- some failsaves
-	print(response)
-	print(body)
 	if body:find('API key not valid') then
 	    return nil, "Invalid api key! See https://github.com/dustin10weering/luvit-yt-searcher."
 	end
