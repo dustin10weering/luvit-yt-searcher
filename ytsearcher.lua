@@ -47,7 +47,7 @@ module.new = function (ytkey,regioncode)
 end
 
 function module:search(searchparam,regioncode)
-    local searchParams = {
+    local searchParams = { -- note: you can add more if they are listed in the youtube api docs.
         key = self.key,
         maxResults = 1,
         part = 'snippet',
@@ -64,14 +64,35 @@ function module:search(searchparam,regioncode)
     if not body then
         return nil,response
     end
+	-- some failsaves
+	print(response)
+	print(body)
+	if body:find('API key not valid') then
+	    return nil, "Invalid api key! See https://github.com/dustin10weering/luvit-yt-searcher."
+	end
+	if body:find('"status": "INVALID_ARGUMENT"') then
+	    print("Invalid arguments! Invalid url: "..apiurl..queryUrl)
+	    local from = body:find('"message":')
+		if from then
+		    return nil, "Invalid arguments! "..find(body,'"message":')
+		else
+		    return nil, "Invalid arguments! See console for not-working url."
+		end
+	end
+	if body:find('"totalResults": 0') then
+	    return nil, "No results"
+	end
     local from = body:find('"high":')
-    if not from then
-        return nil, "Cannot find thumbnail"
+    if from then
+	    from = nil
+	else
+        from = "" -- (empty thumbnail string) no thumbnail given back
     end
+	--
     local videoinfo = {
         id = find(body,'"videoId":'),
         title = find(body,'"title":'),
-        thumbnail = find(body,'"url":',from),
+        thumbnail = from or find(body,'"url":',from),
         author = find(body,'"channelTitle":')
     }
     return videoinfo
