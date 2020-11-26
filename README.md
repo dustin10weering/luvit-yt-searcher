@@ -14,9 +14,10 @@ You can either get this as zip, use git bash or install it with luvit `lit insta
 
 ## Small documentation
 
-All of them are functions.
+Both of them are functions.
 
 * `ytsearcher.new(YT_API_KEY)` Returns ytsearcher module itself, but with the key info included.
+
 * `ytsearcher:search(term,regioncode)` Returns `video-info-table` (table, can be nil if no results.) and `response` (string or nil). 
 
 Note that response may be nil when there's no response.
