@@ -1,5 +1,5 @@
 -- searches video on youtube, made by dustin.
--- uses the coro-http module from luvit
+-- uses the coro-http module from luvit itself
 --[[ 
 HOW TO USE:
 require it with something like "local ytsearcher = require('ytsearcher').new(YOUTUBE_API_KEY as string)"
