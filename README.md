@@ -3,12 +3,12 @@ Searches for a video on youtube using google's youtube api. (not for youtube-dl)
 
 ## How to install this dep?
 You do need [Luvit](https://luvit.io/) of course.
-You can either get this as zip, use git bash or install it with luvit `lit install luvit-yt-searcher` (note: coming soon to lit)
+You can either get this as zip, use git bash or install it with luvit `lit install dustin10weering/luvit-yt-searcher`
 
 ## So how do I use it?
 1. First of all, you need a youtube api key. You can get one by following this tutioral: https://developers.google.com/youtube/v3/getting-started. To view your quota, you can view this page https://console.cloud.google.com/apis/.
 
-2. require the module with `local ytsearcher = require('ytsearcher').new('YOUR_YOUTUBE_API_KEY')` and replace YOUR_YOUTUBE_API_KEY with your youtube api key.
+2. require the module with `local ytsearcher = require('luvit-yt-searcher').new('YOUR_YOUTUBE_API_KEY')` and replace YOUR_YOUTUBE_API_KEY with your youtube api key.
 
 3. search something with ytsearcher:search (for example: `ytsearcher:search('banana+phone')`) it will return the youtube video info with id and a response. If it can't find the video, video table will be nil and response may contain info about what happened. When searching you have to put + on spaces, so you can just use gsub for that.
 
